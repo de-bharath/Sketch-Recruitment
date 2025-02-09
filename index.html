@@ -1,0 +1,152 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPU Research</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>GPU Research</h1>
+        <nav>
+            <ul>
+                <li><a href="#" onclick="showContent('introduction')">Introduction</a></li>
+                <li><a href="#" onclick="showContent('architecture')">Architecture</a></li>
+                <li><a href="#" onclick="showContent('history')">History</a></li>
+                <li><a href="#" onclick="showContent('types')">Types</a></li>
+                <li><a href="#" onclick="showContent('applications')">Applications</a></li>
+                <li><a href="#" onclick="showContent('manufacturers')">Manufacturers</a></li>
+                <li><a href="#" onclick="showContent('future')">Future Trends</a></li>
+            </ul>
+        </nav>
+        <div id="content"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPU Research</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #1a1a2e;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #2196F3;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .nav-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .nav-link {
+            padding: 12px 20px;
+            font-size: 1rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+            background: linear-gradient(135deg, #ff7e5f, #fc4a1a);
+            border-radius: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease-in-out;
+            border: none;
+            cursor: pointer;
+        }
+
+        .nav-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(255, 126, 95, 0.5);
+        }
+
+        #content {
+            margin-top: 30px;
+            padding: 20px;
+            width: 80%;
+            max-width: 800px;
+            background: #22223b;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 255, 255, 0.2);
+            text-align: center;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        #content h2 {
+            color: #00e6e6;
+            font-size: 1.8rem;
+        }
+
+        #content p {
+            text-align: justify;
+            line-height: 1.6;
+            margin-top: 10px;
+        }
+
+        #content.show {
+            display: block;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>GPU Research</h1>
+
+    <div class="nav-container">
+        <button class="nav-link" onclick="showContent('introduction')">Introduction</button>
+        <button class="nav-link" onclick="showContent('architecture')">Architecture</button>
+        <button class="nav-link" onclick="showContent('history')">History</button>
+        <button class="nav-link" onclick="showContent('types')">Types</button>
+        <button class="nav-link" onclick="showContent('applications')">Applications</button>
+        <button class="nav-link" onclick="showContent('manufacturers')">Manufacturers</button>
+        <button class="nav-link" onclick="showContent('future')">Future Trends</button>
+    </div>
+
+    <div id="content"></div>
+
+    <script>
+        const sections = {
+            introduction: "A GPU (Graphics Processing Unit) is a specialized electronic circuit designed to accelerate the processing of images, videos, and animations for output on a display device. Unlike CPUs, which handle general-purpose computing tasks, GPUs are optimized for parallel processing, making them ideal for handling large-scale computations. Modern GPUs are widely used not only for graphics rendering but also for AI, deep learning, and scientific simulations.",
+            architecture: "GPUs consist of thousands of small shader cores (CUDA cores for NVIDIA, Stream Processors for AMD) that perform multiple computations simultaneously, enabling high-speed parallel processing. The memory interface ensures efficient data transfer with high-bandwidth memory such as GDDR6 or HBM2, which provides faster access to textures and other graphical elements. Advanced GPUs also feature ray tracing cores, which simulate real-world light reflections and shadows for enhanced realism in gaming and CGI.",
+            history: "The evolution of GPUs started with simple 2D graphics controllers in the 1970s, which helped render basic images on early computers. In the late 1990s, NVIDIA’s GeForce 256 introduced hardware-based Transformation and Lighting (T&L), marking the transition to modern GPUs. The 2000s saw the rise of general-purpose GPU computing (GPGPU), enabling GPUs to be used in scientific simulations, AI research, and deep learning.",
+            types: "Integrated GPUs are power-efficient, Discrete GPUs are high-performance, and External GPUs enhance laptops.",
+            applications: "GPUs play a crucial role in video games, rendering realistic 3D environments, lighting effects, and physics simulations. In AI and deep learning, GPUs speed up model training by processing massive datasets in parallel using frameworks like TensorFlow and PyTorch. Other applications include scientific research (climate modeling, genomics), video editing (real-time rendering in software like Adobe Premiere and Blender), and cryptocurrency mining, where GPUs perform complex calculations to validate blockchain transactions.",
+            manufacturers: "Major GPU manufacturers include NVIDIA, AMD, and Intel, each specializing in different market needs.",
+            future: "Future GPUs will have even more specialized AI hardware, such as dedicated tensor cores for faster machine learning computations. Quantum computing integration with GPUs could lead to hybrid computing models, enhancing problem-solving capabilities in scientific research. Power efficiency is a growing concern, with manufacturers focusing on reducing power consumption while increasing performance, making GPUs more sustainable for cloud gaming and AI-driven applications."
+        };
+
+        function showContent(section) {
+            const contentDiv = document.getElementById('content');
+            contentDiv.innerHTML = `<h2>${section.charAt(0).toUpperCase() + section.slice(1)}</h2><p>${sections[section]}</p>`;
+
+            contentDiv.classList.remove('show'); 
+            setTimeout(() => contentDiv.classList.add('show'), 50);
+        }
+    </script>
+
+</body>
+</html>
